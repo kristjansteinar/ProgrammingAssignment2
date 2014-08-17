@@ -8,7 +8,7 @@ source('./cachematrix.R')
 # create matrix with the inverse structure
 test <- makeCacheMatrix(a)
 # calculate or get cached inverse of a
-testInverse <- cacheSolve(test)
+testInverse <- cacheSolve(test) 
 
 #verify inverse data
 identical(ainverse, testInverse)
