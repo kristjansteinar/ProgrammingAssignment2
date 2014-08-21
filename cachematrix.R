@@ -1,29 +1,34 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Functions to create a datastructure that holds both a matrix and its
+## inverse, thereby saving computation time.
+## 
 ## It is assumed that the matrix supplied is always invertible.
 
 
 ## Creates a special "matrix" object that can cache its inverse.
 makeCacheMatrix <- function(x = matrix()) {
-  i <- NULL
-   
-  get <- function() x
-  
-  set <- function(matrix) {
-    x <<- matrix
-    i <<- NULL
-  }
-  
-  getInverse <- function() i
-  
-  setInverse <- function(inverse) {
-    i <<- inverse
-  }
-  
-  list(get = get,
-       set = set,
-       getInverse = getInverse,
-       setInverse = setInverse
+    i <- NULL
+
+    get <- function(){
+        x
+    } 
+
+    set <- function(matrix) {
+        x <<- matrix
+        i <<- NULL
+    }
+
+    getInverse <- function() {
+        i
+    }
+
+    setInverse <- function(inverse) {
+        i <<- inverse
+    }
+
+    list(get = get,
+        set = set,
+        getInverse = getInverse,
+        setInverse = setInverse
        )
 }
 
@@ -35,8 +40,8 @@ cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
     inv <- x$getInverse()
     if( !is.null(inv) ) {
-      message("returning cached data")
-      return(inv)
+        message("returning cached data")
+        return(inv)
     }
     data <- x$get()
     inv <- solve(data)
